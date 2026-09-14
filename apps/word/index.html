@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyWord 2026</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="../../auth-guard.js"></script>
+</head>
+<body class="dark word-theme">
+  <div class="mac-menu-bar"><span class="apple-mark">●</span><b>Word</b><button id="fileMenuButton">Файл</button><button data-mac-command="edit">Правка</button><button data-mac-command="view">Вид</button><button data-mac-command="insert">Вставка</button><button data-mac-command="format">Формат</button><button data-mac-command="tools">Сервис</button><button data-mac-command="table">Таблица</button><button data-mac-command="window">Окно</button><button data-mac-command="help">Справка</button><time id="menuClock"></time></div>
+  <header class="topbar">
+    <div class="brand"><div class="logo">W</div><div><strong>MyWord 2026</strong><span id="saveStatus">Документ сохранён</span></div></div>
+    <div class="window-title">Документ1</div>
+    <div class="modern-actions">
+      <button id="compactRibbonButton" title="Свернуть или развернуть ленту">⌃ Лента</button>
+      <button id="assistantButton" class="assistant-launch" title="Открыть Помощник 2026">✦ Помощник</button>
+      <button id="quickShareButton" class="share-button" title="Скопировать документ для отправки">Поделиться</button>
+    </div>
+    <div class="top-actions">
+      <button id="newButton" title="Новый документ">＋ Новый</button>
+      <button id="templatesButton" title="Готовые шаблоны">▦ Шаблоны</button>
+      <button id="openButton" title="Открыть файл">📂 Открыть</button>
+      <button id="saveButton" class="primary" title="Сохранить документ">💾 Сохранить</button>
+      <button id="projectButton" title="Сохранить проект со всеми настройками">📦 Проект</button>
+      <button id="historyButton" title="История версий">🕘 История</button>
+      <button id="saveCopyButton" title="Сохранить отдельную копию">📑 Копия</button>
+      <button id="documentsButton" title="Документы в браузере">🗂 Документы</button>
+      <button id="lockedButton" title="Сохранить с паролем">🔒 Пароль</button>
+      <button id="markdownButton" title="Сохранить в Markdown">MD</button>
+      <button id="docButton" title="Сохранить для Microsoft Word">W DOC</button>
+      <button id="duplicateButton" title="Создать копию документа">⧉ Дубликат</button>
+      <button id="commandButton" title="Быстрые команды (Ctrl+K)">⌘ Команды</button>
+      <button id="speakButton" title="Прочитать выделенный текст или документ">🔊 Читать</button>
+      <button id="focusTimerButton" title="Таймер концентрации">⏱ 25:00</button>
+      <button id="propertiesButton" title="Свойства документа">ℹ Свойства</button>
+      <button id="restoreBackupButton" title="Восстановить аварийную копию">♻ Копия</button>
+      <button id="txtButton" title="Сохранить обычный текст">TXT</button>
+      <button id="printButton" title="Печать или PDF">🖨️ PDF</button>
+      <button id="themeButton" class="icon-button" title="Сменить тему">🌙</button>
+      <button id="fullscreenButton" class="icon-button" title="Полноэкранный режим">⛶</button>
+      <button id="voiceButton" title="Голосовой ввод">🎙️ Диктовка</button>
+      <input id="fileInput" type="file" accept=".html,.htm,.txt,.json,.locked" hidden>
+      <input id="imageInput" type="file" accept="image/*" hidden>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Вкладки">
+    <button class="tab active" data-ribbon="home">Главная</button>
+    <button class="tab" data-ribbon="insert">Вставка</button>
+    <button class="tab" data-ribbon="design">Конструктор</button>
+    <button class="tab" data-ribbon="layout">Макет</button>
+    <button class="tab" data-ribbon="links">Ссылки</button>
+    <button class="tab" data-ribbon="mail">Рассылки</button>
+    <button class="tab" data-ribbon="review">Рецензирование</button>
+    <button class="tab" data-ribbon="view">Вид</button>
+  </nav>
+  <div id="fileMenu" class="file-menu hidden">
+    <button data-file-action="newButton"><span>Создать документ</span><kbd>Ctrl+N</kbd></button>
+    <button data-file-action="templatesButton"><span>Создать из шаблона…</span><kbd>Ctrl+Shift+N</kbd></button>
+    <div class="file-separator"></div>
+    <button data-file-action="openButton"><span>Открыть…</span><kbd>Ctrl+O</kbd></button>
+    <button data-file-action="documentsButton"><span>Открыть последние</span><b>›</b></button>
+    <div class="file-separator"></div>
+    <button data-file-action="projectButton"><span>Сохранить</span><kbd>Ctrl+S</kbd></button>
+    <button data-file-action="saveCopyButton"><span>Сохранить как…</span><kbd>Ctrl+Shift+S</kbd></button>
+    <button data-file-action="saveCustomTemplateButton"><span>Сохранить как шаблон…</span></button>
+    <button data-file-action="historyButton"><span>Просмотреть журнал версий</span></button>
+    <div class="file-separator"></div>
+    <button data-file-action="lockedButton"><span>Защитить паролем…</span></button>
+    <button data-file-action="printButton"><span>Печать…</span><kbd>Ctrl+P</kbd></button>
+    <button data-file-action="propertiesButton"><span>Свойства…</span></button>
+  </div>
+
+  <section class="ribbon" aria-label="Форматирование текста">
+    <div class="tool-group history-tools">
+      <button data-command="undo" title="Отменить">↶</button>
+      <button data-command="redo" title="Повторить">↷</button>
+    </div>
+    <div class="tool-group font-tools">
+      <select id="fontName" aria-label="Шрифт">
+        <option value="Arial">Arial</option>
+        <option value="Calibri" selected>Calibri</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Verdana">Verdana</option>
+      </select>
+      <select id="fontSize" aria-label="Размер шрифта">
+        <option value="1">10</option><option value="2">12</option>
+        <option value="3" selected>14</option><option value="4">18</option>
+        <option value="5">24</option><option value="6">32</option><option value="7">48</option>
+      </select>
+      <button data-command="bold" title="Жирный"><b>Ж</b></button>
+      <button data-command="italic" title="Курсив"><i>К</i></button>
+      <button data-command="underline" title="Подчёркнутый"><u>Ч</u></button>
+      <button data-command="strikeThrough" title="Зачёркнутый"><s>З</s></button>
+      <button data-command="superscript" title="Верхний индекс">X²</button>
+      <button data-command="subscript" title="Нижний индекс">X₂</button>
+      <label class="color-tool" title="Цвет текста">A<input id="textColor" type="color" value="#111827"></label>
+      <label class="color-tool highlight" title="Цвет выделения">▰<input id="highlightColor" type="color" value="#fff2a8"></label>
+    </div>
+    <div class="tool-group paragraph-tools">
+      <button data-command="justifyLeft" title="По левому краю">☰</button>
+      <button data-command="justifyCenter" title="По центру">≡</button>
+      <button data-command="justifyRight" title="По правому краю">☷</button>
+      <button data-command="insertUnorderedList" title="Маркированный список">• Список</button>
+      <button data-command="insertOrderedList" title="Нумерованный список">1. Список</button>
+      <button data-command="outdent" title="Уменьшить отступ">⇤</button>
+      <button data-command="indent" title="Увеличить отступ">⇥</button>
+      <select id="lineHeight" title="Межстрочный интервал"><option value="1">1,0</option><option value="1.15" selected>1,15</option><option value="1.5">1,5</option><option value="2">2,0</option></select>
+    </div>
+    <div class="tool-group style-tools">
+      <select id="blockFormat" aria-label="Стиль текста">
+        <option value="p">Обычный текст</option>
+        <option value="h1">Заголовок 1</option>
+        <option value="h2">Заголовок 2</option>
+        <option value="h3">Заголовок 3</option>
+      </select>
+      <button data-command="removeFormat">Очистить формат</button>
+      <div class="word-style-gallery">
+        <button data-word-style="p"><b>АаБбВв</b><span>Обычный</span></button>
+        <button data-word-style="h1"><b>АаБбВв</b><span>Заголовок 1</span></button>
+        <button data-word-style="h2"><b>АаБбВв</b><span>Заголовок 2</span></button>
+        <button data-word-style="h3"><b>АаБбВв</b><span>Заголовок 3</span></button>
+        <button data-word-style="blockquote"><b>АаБбВв</b><span>Цитата</span></button>
+      </div>
+    </div>
+    <div class="tool-group insert-tools">
+      <button id="imageButton">🖼 Изображение</button>
+      <button id="tableButton">▦ Таблица</button>
+      <button id="linkButton">🔗 Ссылка</button>
+      <button id="dateButton">📅 Дата</button>
+      <button id="pageBreakButton">↵ Разрыв страницы</button>
+      <button id="quoteButton">❝ Цитата</button>
+      <button id="codeButton">&lt;/&gt; Код</button>
+      <button id="checklistButton">☑ Чек-лист</button>
+      <button id="tocButton">☷ Оглавление</button>
+      <button id="signatureButton">✍ Подпись</button>
+      <button id="plainPasteButton">📋 Без формата</button>
+      <button id="horizontalRuleButton">— Линия</button>
+      <select id="calloutSelect" title="Информационный блок"><option value="">▣ Инфоблок</option><option value="info">ℹ Информация</option><option value="tip">💡 Совет</option><option value="warning">⚠ Важно</option></select>
+      <select id="quickBlockSelect" title="Готовые текстовые блоки"><option value="">⚡ Быстрый блок</option><option value="meeting">Протокол встречи</option><option value="notice">Служебная записка</option><option value="approval">Блок согласования</option></select>
+      <div class="table-menu">
+        <button id="tableEditButton">⚙ Таблица</button>
+        <div id="tableMenuPanel" class="dropdown-panel hidden"><button data-table-action="row-after">＋ Строка</button><button data-table-action="column-after">＋ Столбец</button><button data-table-action="delete-row">− Строка</button><button data-table-action="delete-column">− Столбец</button><button data-table-action="delete-table">🗑 Таблица</button></div>
+      </div>
+    </div>
+    <div class="tool-group document-tools">
+      <button id="findButton">🔎 Найти и заменить</button>
+      <button id="headerButton">↑ Колонтитул</button>
+      <button id="footerButton">↓ Номер страницы</button>
+      <button id="outlineButton">☷ Структура</button>
+      <select id="marginSelect" title="Поля страницы"><option value="normal">Обычные поля</option><option value="narrow">Узкие поля</option><option value="wide">Широкие поля</option></select>
+      <select id="orientationSelect" title="Ориентация страницы"><option value="portrait">Книжная</option><option value="landscape">Альбомная</option></select>
+      <select id="pageSizeSelect" title="Размер страницы"><option value="a4">A4</option><option value="a5">A5</option><option value="letter">Letter</option></select>
+      <label class="color-tool" title="Цвет страницы">📄<input id="pageColor" type="color" value="#ffffff"></label>
+      <select id="columnsSelect" title="Колонки текста"><option value="1">1 колонка</option><option value="2">2 колонки</option></select>
+      <button id="spellButton" class="active-tool">✓ Орфография</button>
+      <button id="readingModeButton">👁 Чтение</button>
+      <button id="commentButton">💬 Комментарий</button>
+      <button id="commentsButton">🗨 Комментарии</button>
+      <button id="watermarkButton">🔏 Водяной знак</button>
+      <button id="borderButton">▣ Рамка</button>
+      <button id="statsButton">📊 Статистика</button>
+      <button id="frequencyButton">🔤 Частые слова</button>
+      <button id="addBookmarkButton">🔖 Добавить закладку</button>
+      <button id="bookmarksButton">📑 Закладки</button>
+      <button id="accessibilityButton">♿ Доступность</button>
+      <select id="languageSelect" title="Язык проверки текста"><option value="ru-RU">Русский</option><option value="kk-KZ">Қазақша</option><option value="en-US">English</option></select>
+      <select id="caseSelect" title="Изменение регистра"><option value="">Аа Регистр</option><option value="upper">ВСЕ ПРОПИСНЫЕ</option><option value="lower">все строчные</option><option value="sentence">Как в предложении</option><option value="title">Каждое Слово</option></select>
+      <button id="cleanSpacesButton">✨ Убрать пробелы</button>
+      <button id="copyFormatButton">🖌 Копировать стиль</button>
+      <button id="applyFormatButton">🎨 Применить стиль</button>
+      <button id="trackChangesButton">📝 Исправления</button>
+      <button id="acceptChangesButton">✓ Принять</button>
+      <button id="rejectChangesButton">× Отклонить</button>
+      <button id="wordGoalButton">🎯 Цель слов</button>
+      <div class="symbol-menu"><button id="symbolsButton">Ω Символы</button><div id="symbolsPanel" class="symbols-panel hidden"><button>©️</button><button>®️</button><button>™️</button><button>₸</button><button>€</button><button>✓</button><button>★</button><button>→</button><button>°</button><button>±</button><button>№</button><button>∞</button></div></div>
+    </div>
+  </section>
+
+  <main class="workspace">
+    <aside id="outlinePanel" class="outline-panel hidden">
+      <div class="outline-title"><strong>Структура документа</strong><button id="closeOutlineButton">×</button></div>
+      <div id="outlineList" class="outline-list"><p>Добавьте заголовки в документ.</p></div>
+    </aside>
+    <div class="document-wrap">
+      <input id="documentTitle" class="document-title" value="Новый документ" aria-label="Название документа">
+      <article id="editor" class="page" contenteditable="true" spellcheck="true" aria-label="Редактор документа">
+        <h1>Добро пожаловать в MyWord 2026</h1>
+        <p>Начните писать здесь. Выделите текст и используйте панель форматирования сверху.</p>
+      </article>
+    </div>
+  </main>
+
+  <aside id="assistantPanel" class="assistant-panel hidden" aria-label="Помощник 2026">
+    <div class="assistant-head"><div><span>✦ Локальные инструменты</span><h2>Помощник 2026</h2></div><button id="closeAssistantButton" aria-label="Закрыть">×</button></div>
+    <p class="assistant-hint">Выделите текст для работы только с фрагментом. Без выделения используется весь документ.</p>
+    <div class="assistant-actions">
+      <button data-assistant="improve"><b>✨</b><span><strong>Улучшить текст</strong><small>Исправить пробелы и оформление</small></span></button>
+      <button data-assistant="summary"><b>≡</b><span><strong>Краткое содержание</strong><small>Создать выжимку из документа</small></span></button>
+      <button data-assistant="formal"><b>Aa</b><span><strong>Деловой стиль</strong><small>Сделать формулировки аккуратнее</small></span></button>
+      <button data-assistant="tasks"><b>☑</b><span><strong>Выделить задачи</strong><small>Создать список следующих шагов</small></span></button>
+    </div>
+    <label class="assistant-prompt">Быстрая вставка<textarea id="assistantPrompt" placeholder="Например: План встречи с командой"></textarea></label>
+    <button id="assistantInsertButton" class="assistant-primary">Создать блок</button>
+    <div id="assistantResult" class="assistant-result"><span>Результат появится здесь</span></div>
+    <div class="assistant-result-actions"><button id="copyAssistantResultButton">Копировать</button><button id="insertAssistantResultButton">Вставить в документ</button></div>
+  </aside>
+
+  <div id="slashMenu" class="slash-menu hidden" role="menu">
+    <span>Быстрая вставка</span>
+    <button data-slash="h1">H1 <b>Заголовок</b></button><button data-slash="check">☑ <b>Чек-лист</b></button>
+    <button data-slash="quote">❝ <b>Цитата</b></button><button data-slash="table">▦ <b>Таблица</b></button>
+    <button data-slash="date">📅 <b>Сегодняшняя дата</b></button><button data-slash="assistant">✦ <b>Помощник 2026</b></button>
+  </div>
+
+  <footer class="statusbar">
+    <span id="pageCount">Страница 1 из 1</span>
+    <span id="wordCount">Слов: 0</span>
+    <span id="charCount">Знаков: 0</span>
+    <span id="selectionCount">Выделено: 0</span>
+    <span id="goalStatus">Цель: не задана</span>
+    <div class="goal-progress" title="Прогресс цели"><i id="goalProgressBar"></i></div>
+    <span id="timerStatus" class="timer-status"></span>
+    <span id="readingTime">Чтение: менее 1 мин</span>
+    <div class="zoom"><span>−</span><input id="zoomRange" type="range" min="70" max="140" value="100"><span>＋</span><output id="zoomValue">100%</output></div>
+  </footer>
+
+  <div id="toast" class="toast" role="status"></div>
+  <div id="imageToolbar" class="image-toolbar hidden">
+    <span>Изображение</span><button data-image-size="25%">25%</button><button data-image-size="50%">50%</button><button data-image-size="75%">75%</button><button data-image-size="100%">100%</button><button data-image-align="left">←</button><button data-image-align="center">↔️</button><button data-image-align="right">→</button><button id="deleteImageButton">🗑</button>
+  </div>
+  <div id="templatesModal" class="modal hidden">
+    <div class="modal-card template-screen">
+      <aside class="template-sidebar"><strong>Microsoft Word</strong><button>◉ Войти</button><button class="active">＋ Новый</button><button data-file-action="documentsButton">◷ Последние</button><button data-file-action="openButton">▱ Открыть</button></aside>
+      <section class="template-content"><div class="modal-head"><div><span>MyWord 2026</span><h2>Создать документ</h2></div><button id="closeTemplatesButton">×</button></div>
+      <div class="template-grid word-template-grid">
+        <button class="template-card" data-template="blank"><b>📄</b><strong>Пустой документ</strong><span>Начать с чистой страницы</span></button>
+        <button class="template-card" data-template="notes"><b>🗒</b><strong>Заметки</strong><span>Идеи и короткие записи</span></button>
+        <button class="template-card" data-template="calendar"><b>🗓</b><strong>Календарь</strong><span>План на месяц</span></button>
+        <button class="template-card" data-template="resume"><b>👤</b><strong>Резюме</strong><span>Опыт, навыки и контакты</span></button>
+        <button class="template-card" data-template="letter"><b>✉️</b><strong>Деловое письмо</strong><span>Готовая структура письма</span></button>
+        <button class="template-card" data-template="report"><b>📊</b><strong>Отчёт</strong><span>Заголовки и разделы отчёта</span></button>
+        <button class="template-card" data-template="checklist"><b>☑</b><strong>Список</strong><span>План и задачи</span></button>
+        <button class="template-card" data-template="journal"><b>📔</b><strong>Журнал</strong><span>Ежедневные записи</span></button>
+        <button class="template-card" data-template="newsletter"><b>📰</b><strong>Бюллетень</strong><span>Новости и объявления</span></button>
+        <button class="template-card" data-template="brochure"><b>📖</b><strong>Буклет</strong><span>Красочная информация</span></button>
+        <button id="customTemplateButton" class="template-card"><b>⭐</b><strong>Мой шаблон</strong><span>Открыть сохранённый шаблон</span></button>
+      </div>
+      <button id="saveCustomTemplateButton" class="save-version-button custom-template-button">＋ Сохранить текущий документ как мой шаблон</button>
+      </section>
+    </div>
+  </div>
+  <div id="historyModal" class="modal hidden">
+    <div class="modal-card history-card">
+      <div class="modal-head"><div><span>Резервные копии</span><h2>История документа</h2></div><button id="closeHistoryButton">×</button></div>
+      <button id="saveVersionButton" class="save-version-button">＋ Сохранить текущую версию</button>
+      <div id="historyList" class="history-list"></div>
+    </div>
+  </div>
+  <aside id="commentsPanel" class="comments-panel hidden"><div class="outline-title"><strong>Комментарии</strong><button id="closeCommentsButton">×</button></div><div id="commentsList"></div></aside>
+  <aside id="bookmarksPanel" class="comments-panel hidden"><div class="outline-title"><strong>Закладки документа</strong><button id="closeBookmarksButton">×</button></div><div id="bookmarksList"></div></aside>
+  <div id="statsModal" class="modal hidden"><div class="modal-card stats-card"><div class="modal-head"><div><span>Анализ текста</span><h2 id="statsModalTitle">Статистика документа</h2></div><button id="closeStatsButton">×</button></div><div id="statsGrid" class="stats-grid"></div><div id="frequencyList" class="frequency-list hidden"></div></div></div>
+  <div id="propertiesModal" class="modal hidden"><div class="modal-card properties-card"><div class="modal-head"><div><span>Метаданные</span><h2>Свойства документа</h2></div><button id="closePropertiesButton">×</button></div><label>Автор<input id="documentAuthor" placeholder="Имя автора"></label><label>Тема<input id="documentSubject" placeholder="Тема документа"></label><label>Ключевые слова<input id="documentKeywords" placeholder="Например: отчёт, работа, 2026"></label><button id="savePropertiesButton" class="save-version-button">Сохранить свойства</button></div></div>
+  <div id="accessibilityModal" class="modal hidden"><div class="modal-card stats-card"><div class="modal-head"><div><span>Проверка документа</span><h2>Доступность</h2></div><button id="closeAccessibilityButton">×</button></div><div id="accessibilityResults" class="accessibility-results"></div></div></div>
+  <div id="documentsModal" class="modal hidden"><div class="modal-card history-card"><div class="modal-head"><div><span>Локальное хранилище</span><h2>Мои документы</h2></div><button id="closeDocumentsButton">×</button></div><button id="saveBrowserDocumentButton" class="save-version-button">＋ Сохранить текущий документ</button><div id="documentsList" class="history-list"></div></div></div>
+  <div id="commandModal" class="modal hidden"><div class="modal-card command-card"><div class="modal-head"><div><span>Ctrl+K</span><h2>Быстрые команды</h2></div><button id="closeCommandButton">×</button></div><input id="commandSearch" class="command-search" placeholder="Найти команду…" autocomplete="off"><div id="commandList" class="command-list"></div></div></div>
+  <script src="script.js"></script>
+</body>
+</html>
