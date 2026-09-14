@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <title>Kazhi Office 2026</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23111827'/%3E%3Cpath d='M18 14h25l7 7v29H18z' fill='%232563eb'/%3E%3Cpath d='M43 14v9h9' fill='none' stroke='white' stroke-width='4'/%3E%3Ctext x='25' y='43' font-size='27' font-family='Arial' font-weight='700' fill='white'%3EK%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="login-screen" id="loginScreen">
+    <form class="login-card" id="loginForm">
+      <div class="brand-mark">K</div>
+      <h1>Kazhi Office</h1>
+      <p>Войдите, чтобы открыть рабочие программы</p>
+      <label for="username">Логин</label>
+      <input id="username" name="username" autocomplete="username" placeholder="Введите логин" required>
+      <label for="password">Пароль</label>
+      <div class="password-row">
+        <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Введите пароль" required>
+        <button class="show-password" id="showPassword" type="button" aria-label="Показать пароль">Показать</button>
+      </div>
+      <div class="error" id="loginError" role="alert"></div>
+      <button class="login-button" type="submit">Войти</button>
+    </form>
+  </section>
+
+  <main class="office-screen" id="officeScreen" hidden>
+    <header>
+      <div class="brand"><span class="mini-mark">K</span><span>Kazhi Office 2026</span></div>
+      <button class="logout" id="logoutButton" type="button">Выйти</button>
+    </header>
+    <section class="welcome">
+      <p class="eyebrow">Мои программы</p>
+      <h2>Добро пожаловать, Kazhi</h2>
+      <p>Выберите приложение, с которым хотите работать.</p>
+    </section>
+    <section class="app-grid" aria-label="Программы">
+      <a class="app-card word" href="apps/word/index.html">
+        <span class="app-icon">W</span><span><strong>MyWord</strong><small>Документы и текст</small></span><b>Открыть →</b>
+      </a>
+      <a class="app-card excel" href="apps/excel/index.html">
+        <span class="app-icon">X</span><span><strong>MyExcel</strong><small>Таблицы и расчёты</small></span><b>Открыть →</b>
+      </a>
+      <a class="app-card powerpoint" href="apps/powerpoint/index.html">
+        <span class="app-icon">P</span><span><strong>MyPowerPoint</strong><small>Слайды и презентации</small></span><b>Открыть →</b>
+      </a>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
