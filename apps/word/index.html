@@ -40,7 +40,7 @@
       <button id="themeButton" class="icon-button" title="Сменить тему">🌙</button>
       <button id="fullscreenButton" class="icon-button" title="Полноэкранный режим">⛶</button>
       <button id="voiceButton" title="Голосовой ввод">🎙️ Диктовка</button>
-      <input id="fileInput" type="file" accept=".html,.htm,.txt,.json,.locked" hidden>
+      <input id="fileInput" type="file" accept=".docx,.html,.htm,.txt,.json,.locked" hidden>
       <input id="imageInput" type="file" accept="image/*" hidden>
     </div>
   </header>
@@ -175,7 +175,7 @@
       <button id="acceptChangesButton">✓ Принять</button>
       <button id="rejectChangesButton">× Отклонить</button>
       <button id="wordGoalButton">🎯 Цель слов</button>
-      <div class="symbol-menu"><button id="symbolsButton">Ω Символы</button><div id="symbolsPanel" class="symbols-panel hidden"><button>©️</button><button>®️</button><button>™️</button><button>₸</button><button>€</button><button>✓</button><button>★</button><button>→</button><button>°</button><button>±</button><button>№</button><button>∞</button></div></div>
+      <div class="symbol-menu"><button id="symbolsButton">Ω Символы</button><div id="symbolsPanel" class="symbols-panel hidden"><button>©</button><button>®</button><button>™</button><button>₸</button><button>€</button><button>✓</button><button>★</button><button>→</button><button>°</button><button>±</button><button>№</button><button>∞</button></div></div>
     </div>
   </section>
 
@@ -229,7 +229,7 @@
 
   <div id="toast" class="toast" role="status"></div>
   <div id="imageToolbar" class="image-toolbar hidden">
-    <span>Изображение</span><button data-image-size="25%">25%</button><button data-image-size="50%">50%</button><button data-image-size="75%">75%</button><button data-image-size="100%">100%</button><button data-image-align="left">←</button><button data-image-align="center">↔️</button><button data-image-align="right">→</button><button id="deleteImageButton">🗑</button>
+    <span>Изображение</span><button data-image-size="25%">25%</button><button data-image-size="50%">50%</button><button data-image-size="75%">75%</button><button data-image-size="100%">100%</button><button data-image-align="left">←</button><button data-image-align="center">↔</button><button data-image-align="right">→</button><button id="deleteImageButton">🗑</button>
   </div>
   <div id="templatesModal" class="modal hidden">
     <div class="modal-card template-screen">
@@ -266,6 +266,8 @@
   <div id="accessibilityModal" class="modal hidden"><div class="modal-card stats-card"><div class="modal-head"><div><span>Проверка документа</span><h2>Доступность</h2></div><button id="closeAccessibilityButton">×</button></div><div id="accessibilityResults" class="accessibility-results"></div></div></div>
   <div id="documentsModal" class="modal hidden"><div class="modal-card history-card"><div class="modal-head"><div><span>Локальное хранилище</span><h2>Мои документы</h2></div><button id="closeDocumentsButton">×</button></div><button id="saveBrowserDocumentButton" class="save-version-button">＋ Сохранить текущий документ</button><div id="documentsList" class="history-list"></div></div></div>
   <div id="commandModal" class="modal hidden"><div class="modal-card command-card"><div class="modal-head"><div><span>Ctrl+K</span><h2>Быстрые команды</h2></div><button id="closeCommandButton">×</button></div><input id="commandSearch" class="command-search" placeholder="Найти команду…" autocomplete="off"><div id="commandList" class="command-list"></div></div></div>
+  <script src="https://unpkg.com/mammoth@1.8.0/mammoth.browser.min.js"></script>
+  <script src="https://unpkg.com/html-docx-js@0.3.1/dist/html-docx.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
